@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import {
   Input,
   Nav,
@@ -9,7 +8,7 @@ import {
   NavRight,
   PositionedLink
 } from "../../styled/";
-
+import Authentication from "../auth/Authentication";
 interface Props {}
 
 export const Header: React.FC<Props> = props => {
@@ -17,12 +16,13 @@ export const Header: React.FC<Props> = props => {
     <Nav>
       <NavHeader>
         <NavLeft>
-          <Link to="/">Streamer</Link>
+          <PositionedLink to="/">Streamer</PositionedLink>
         </NavLeft>
         <NavCenter>
           <Input type="text" placeholder="Search" />
         </NavCenter>
         <NavRight>
+          <Authentication />
           <PositionedLink to="/">All Streams</PositionedLink>
         </NavRight>
       </NavHeader>
