@@ -2,11 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import { EAuth } from "../../models/enums/EAuth";
 import { googleClientId } from "../../models/globals/globals";
+import { IAuthState } from "../../models/IAuthState";
 import { signInAction, signOutAction } from "../../store/actions/actions";
 import { CustomButton } from "../../styled/buttons/AuthButton";
 
 interface IAuthProp {
-  signInAction: () => void;
+  signInAction: (par: IAuthState) => void;
   signOutAction: () => void;
   isSignedIn: any;
 }
@@ -29,14 +30,16 @@ class Authentication extends React.Component<IAuthProp, {}> {
   }
 
   onAuthChange = (isSignedIn: any) => {
-    isSignedIn ? this.props.signInAction() : this.props.signOutAction();
+    isSignedIn
+      ? this.props.signInAction(this.auth.currentUser.get().getId())
+      : this.props.signOutAction();
   };
 
   onAuthSingIn = () => {
     this.auth.signIn();
   };
   onAuthSingOut = () => {
-    this.auth.singOut();
+    this.auth.signOut();
   };
 
   renderAuthButton() {
@@ -44,11 +47,11 @@ class Authentication extends React.Component<IAuthProp, {}> {
       return null;
     } else if (this.props.isSignedIn) {
       return (
-        <CustomButton onClick={this.onAuthSingIn} primary title="Sign In" />
+        <CustomButton onClick={this.onAuthSingOut} primary title="Sign out" />
       );
     } else {
       return (
-        <CustomButton primary title="Sign out" onClick={this.onAuthSingOut} />
+        <CustomButton primary title="Sign in" onClick={this.onAuthSingIn} />
       );
     }
   }

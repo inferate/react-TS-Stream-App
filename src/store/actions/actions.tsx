@@ -1,8 +1,10 @@
+import { IAuthState } from "../../models/IAuthState";
 import { EActionTypes } from "../../models/types/actionTypes";
 
-export const signInAction = () => {
+export const signInAction = (userId: IAuthState) => {
   return {
-    type: EActionTypes.SIGN_IN
+    type: EActionTypes.SIGN_IN,
+    payload: userId
   };
 };
 

@@ -11,6 +11,8 @@ interface IStylesNav {}
 
 export const PositionedLink = styled(Link)<IStylesNav>`
   text-decoration: none;
+  align-self:center
+  flex-grow:2;
   color: ${props => props.theme.textStyle.fourty};
 `;
 
@@ -31,8 +33,6 @@ export const NavHeader = styled.div`
   @media (max-width: 762px) {
     flex-direction:column
     align-items:flex-start
-    
-   
   }
 `;
 export const NavLeft = styled.div`
@@ -41,7 +41,7 @@ export const NavLeft = styled.div`
 `;
 export const NavCenter = styled.div`
   flex:1
-  text-align: center;
+ 
   @media (max-width: 762px) {
     padding :15px
     
@@ -64,8 +64,10 @@ export const Input = styled.input`
 
 export const NavRight = styled.div`
   flex: 1;
-  text-align: right;
+  display: inline-flex;
+  justify-content: space-between;
   @media (max-width: 762px) {
     text-align: left;
+    flex-direction: column;
   }
 `;

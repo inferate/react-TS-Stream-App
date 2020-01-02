@@ -9,9 +9,9 @@ import {
   PositionedLink
 } from "../../styled/";
 import Authentication from "../auth/Authentication";
-interface Props {}
+interface IHeaderProps {}
 
-export const Header: React.FC<Props> = props => {
+export const Header: React.FC<IHeaderProps> = props => {
   return (
     <Nav>
       <NavHeader>
@@ -22,8 +22,8 @@ export const Header: React.FC<Props> = props => {
           <Input type="text" placeholder="Search" />
         </NavCenter>
         <NavRight>
-          <Authentication />
           <PositionedLink to="/">All Streams</PositionedLink>
+          <Authentication />
         </NavRight>
       </NavHeader>
     </Nav>

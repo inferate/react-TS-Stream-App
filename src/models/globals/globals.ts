@@ -3,5 +3,6 @@ export const googleClientId =
 declare global {
   interface Window {
     gapi: any;
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
   }
 }

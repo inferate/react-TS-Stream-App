@@ -3,6 +3,7 @@ import { ITrackLoginAction } from "./IActionsTypes";
 
 export interface IGetSignupAction extends ITrackLoginAction {
   type: EActionTypes.SIGN_IN;
+  payload: string;
 }
 
 export interface IGetSignoutAction extends ITrackLoginAction {
