@@ -1,9 +1,17 @@
+import { IFormActionsState } from "./IFormActions";
+
 export const initialAuthState: IAuthState = {
-  isSignedIn: null,
-  userId: null
+  isSignedIn: false,
+  userId: ""
 };
 
 export interface IAuthState {
-  isSignedIn?: any;
-  userId: any;
+  readonly isSignedIn: boolean;
+  readonly userId: string;
 }
+
+export const initialStreamState: IFormActionsState = {
+  id: 0,
+  title: "",
+  description: ""
+};

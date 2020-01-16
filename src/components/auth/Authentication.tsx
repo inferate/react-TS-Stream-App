@@ -1,19 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
 import { EAuth } from "../../models/enums/EAuth";
+import { buttonTitle } from "../../models/enums/EHeadings";
 import { googleClientId } from "../../models/globals/globals";
 import { IAuthState } from "../../models/IAuthState";
 import { signInAction, signOutAction } from "../../store/actions/actions";
+import { RootAppState } from "../../store/reducers/rootReducer";
 import { CustomButton } from "../../styled/buttons/AuthButton";
 
-interface IAuthProp {
-  signInAction: (par: IAuthState) => void;
-  signOutAction: () => void;
-  isSignedIn: any;
+interface IAuthProps {
+  signInAction: (par: IAuthState) => object;
+  signOutAction: () => object;
+  isSignedIn: boolean;
 }
 
-class Authentication extends React.Component<IAuthProp, {}> {
+class Authentication extends React.Component<IAuthProps> {
   auth: any;
+  title: any;
   componentDidMount() {
     window.gapi.load("client:auth2", () => {
       window.gapi.client
@@ -29,7 +32,7 @@ class Authentication extends React.Component<IAuthProp, {}> {
     });
   }
 
-  onAuthChange = (isSignedIn: any) => {
+  onAuthChange = (isSignedIn: IAuthProps) => {
     isSignedIn
       ? this.props.signInAction(this.auth.currentUser.get().getId())
       : this.props.signOutAction();
@@ -42,25 +45,37 @@ class Authentication extends React.Component<IAuthProp, {}> {
     this.auth.signOut();
   };
 
-  renderAuthButton() {
-    if (this.props.isSignedIn === null) {
+  renderAuthButton = () => {
+    const { isSignedIn } = this.props;
+    if (isSignedIn === null) {
       return null;
-    } else if (this.props.isSignedIn) {
+    } else if (isSignedIn) {
       return (
-        <CustomButton onClick={this.onAuthSingOut} primary title="Sign out" />
+        <CustomButton
+          onClick={this.onAuthSingOut}
+          primary
+          title={buttonTitle.SignOut}
+          icon
+        />
       );
     } else {
       return (
-        <CustomButton primary title="Sign in" onClick={this.onAuthSingIn} />
+        <CustomButton
+          primary
+          onClick={this.onAuthSingIn}
+          icon
+          title={buttonTitle.SignIn}
+        />
       );
     }
-  }
+  };
 
   public render() {
-    return <div>{this.renderAuthButton()}</div>;
+    return <>{this.renderAuthButton()}</>;
   }
 }
-const mapStateToProps = (state: any) => {
+
+const mapStateToProps = (state: RootAppState) => {
   return { isSignedIn: state.auth.isSignedIn };
 };
 

@@ -1,15 +1,7 @@
 import { Link } from "react-router-dom";
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 
-export const GlobalStyles = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
-  body {
-    font-family: 'Montserrat', sans-serif;
-  }
-`;
-interface IStylesNav {}
-
-export const PositionedLink = styled(Link)<IStylesNav>`
+export const PositionedLink = styled(Link)`
   text-decoration: none;
   align-self:center
   flex-grow:2;
@@ -17,6 +9,7 @@ export const PositionedLink = styled(Link)<IStylesNav>`
 `;
 
 export const Nav = styled.div`
+  text-align: center;
   background-color: #fff;
   border-bottom: 1px solid #613a61;
   display: flex;
@@ -41,17 +34,14 @@ export const NavLeft = styled.div`
 `;
 export const NavCenter = styled.div`
   flex:1
- 
   @media (max-width: 762px) {
     padding :15px
     
 `;
 export const Input = styled.input`
-  font-size: 16px;
-  border: solid 1px #613a61;
+  border:  1px solid #494949
   border-radius: 3px;
   padding: 7px 33px;
-  font-size: 14px;
   font-weight: 300;
   text-align: center;
   background: #fcfcfc
@@ -59,7 +49,16 @@ export const Input = styled.input`
   &:focus {
     text-align: left;
     border: solid 1px #613a61;
-  }
+    color: #494949;
+    border-radius: 50px;
+    border-color: #d09262 !important;
+    transition: all 0.3s ease 0s;
+    outline: 0;
+    ::-webkit-input-placeholder {
+      color: transparent;
+  };
+ 
+  
 `;
 
 export const NavRight = styled.div`

@@ -1,15 +1,16 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import { Router } from "react-router-dom";
 import { Header } from "./header/Header";
+import history from "./navigator/history";
 import Navigator from "./navigator/Navigator";
 
 const App: React.FC = () => {
   return (
     <>
-      <BrowserRouter>
+      <Router history={history}>
         <Header />
         <Navigator />
-      </BrowserRouter>
+      </Router>
     </>
   );
 };

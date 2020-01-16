@@ -5,13 +5,12 @@ import { ThemeProvider } from "styled-components";
 import { store } from "../src/store";
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
-import { GlobalStyles } from "./styled/navigation/MainStyles";
-import { theme } from "./styled/theme/theme";
+import { GlobalStyles, theme } from "./styled/theme/theme";
 
 ReactDOM.render(
   <Provider store={store}>
     <ThemeProvider theme={theme}>
-      <GlobalStyles />
+      <GlobalStyles color />
       <App />
     </ThemeProvider>
   </Provider>,

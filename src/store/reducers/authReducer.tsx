@@ -13,7 +13,7 @@ export const authReducer: Reducer<IAuthState> = (
       return { ...state, isSignedIn: true, userId: action.payload };
 
     case EActionTypes.SIGN_OUT:
-      return { ...state, isSignedIn: false, userId: null };
+      return { ...state, isSignedIn: false, userId: "" };
     default:
       return state;
   }

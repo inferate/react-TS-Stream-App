@@ -1,3 +1,20 @@
+import { createGlobalStyle } from "styled-components";
+
+type ThemeType = typeof theme;
+export interface IThemeStyled {
+  theme: ThemeType;
+  color?: boolean;
+}
+export const GlobalStyles = createGlobalStyle<IThemeStyled>`
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: ${props =>
+      props.color
+        ? props.theme.backgroundStyle.body
+        : props.theme.backgroundStyle.primary}
+  }
+`;
 export const theme = {
   primary: "#fff",
   secondary: "#680A65",
@@ -15,11 +32,13 @@ export const theme = {
   },
   backgroundStyle: {
     primary: " #e0f2f1;",
+    body: "#ff004938",
     secondary: "#db7093"
   },
   buttonStyles: {
     main: "#db7093",
     default: "#fff",
-    auth: "#613a61"
+    auth: "#613a61",
+    stream: "#251c22"
   }
 };

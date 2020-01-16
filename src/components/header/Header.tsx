@@ -1,4 +1,5 @@
 import React from "react";
+import { headings } from "../../models/enums/EHeadings";
 import {
   Input,
   Nav,
@@ -19,7 +20,7 @@ export const Header: React.FC<IHeaderProps> = props => {
           <PositionedLink to="/">Streamer</PositionedLink>
         </NavLeft>
         <NavCenter>
-          <Input type="text" placeholder="Search" />
+          <Input placeholder={headings.search} />
         </NavCenter>
         <NavRight>
           <PositionedLink to="/">All Streams</PositionedLink>
