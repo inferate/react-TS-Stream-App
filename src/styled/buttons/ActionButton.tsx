@@ -3,7 +3,11 @@ import styled from "styled-components";
 import { Minus } from "styled-icons/boxicons-regular/Minus";
 import { MoreVert } from "styled-icons/material/MoreVert";
 import { defaultIconSize } from "../../models/enums/EHeadings";
-import { ButtonContainer, IDefaultButtonProps } from "../buttons/AuthButton";
+import {
+  ButtonContainer,
+  IDefaultButtonProps,
+  Submit
+} from "../buttons/AuthButton";
 
 const Modify = styled(MoreVert)`
   color: black;
@@ -16,7 +20,9 @@ const Delete = styled(Minus)`
   padding-bottom: 2px;
   margin-right: 5px;
 `;
-
+const Create = styled(Submit)`
+  color: inherit;
+`;
 export const ListButtonContainer = styled.div`
   text-align: right;
   margin: 5px;
@@ -75,7 +81,7 @@ export const ListCreateButton: React.FC<IDefaultButtonProps> = ({
 }) => (
   <ListCreateActionButton onClick={onClick}>
     {icon ? (
-      <Minus size={defaultIconSize} crossOrigin />
+      <Create size={defaultIconSize} crossOrigin />
     ) : (
       <Modify size={defaultIconSize} crossOrigin />
     )}
