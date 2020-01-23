@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { VideoPlus } from "styled-icons/boxicons-regular/VideoPlus";
+
 export const ListItemEven = styled.div`
   font-size: 1.2rem;
   display: inline-flex;

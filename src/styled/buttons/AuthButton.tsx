@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { GooglePlus } from "styled-icons/boxicons-logos/GooglePlus";
 import { Plus } from "styled-icons/boxicons-regular/Plus";
 import { defaultIconSize } from "../../models/enums/EHeadings";
+
 export interface IDefaultButtonProps {
   primary?: boolean;
   onClick?: (e: MouseEvent<HTMLElement>) => void;
@@ -43,9 +44,9 @@ export const CustomButton: React.FC<IDefaultButtonProps> = ({
 }) => (
   <ButtonContainer onClick={onClick} primary={primary}>
     {icon ? (
-      <GoogleIcon size={defaultIconSize} />
+      <GoogleIcon crossOrigin size={defaultIconSize} />
     ) : (
-      <Submit size={defaultIconSize} />
+      <Submit crossOrigin size={defaultIconSize} />
     )}
     {title}
   </ButtonContainer>
