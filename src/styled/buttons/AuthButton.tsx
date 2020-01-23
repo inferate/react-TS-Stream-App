@@ -5,7 +5,7 @@ import { Plus } from "styled-icons/boxicons-regular/Plus";
 import { defaultIconSize } from "../../models/enums/EHeadings";
 export interface IDefaultButtonProps {
   primary?: boolean;
-  onClick: (e: MouseEvent<HTMLElement>) => void;
+  onClick?: (e: MouseEvent<HTMLElement>) => void;
   title?: string;
   icon?: boolean;
 }

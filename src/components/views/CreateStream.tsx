@@ -1,42 +1,27 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Field, InjectedFormProps, reduxForm } from "redux-form";
-import { formValidation } from "../../helpers/formValidation";
-import { buttonTitle, EForm, ILabels } from "../../models/enums/EHeadings";
+import { InjectedFormProps } from "redux-form";
+import { titles } from "../../models/enums/EHeadings";
 import { IFormActionsState } from "../../models/IFormActions";
 import { createStreamAction } from "../../store/actions/actions";
-import { CustomButton } from "../../styled/buttons/AuthButton";
-import { FieldWrapper } from "../../styled/form/MainForm";
-import { FormInput } from "../form/FormInput";
+import { ListHeading } from "../../styled/list/ListContainer";
+import StreamForm from "../form/StreamForm";
+interface ICreateStreamProps {
+  createStreamAction: (param: IFormActionsState) => void;
+}
 
-class CreateStream extends Component<InjectedFormProps & any> {
-  onSubmit = (formValues: IFormActionsState) => {
+class CreateStream extends Component<InjectedFormProps & ICreateStreamProps> {
+  onSubmit = (formValues: any) => {
     this.props.createStreamAction(formValues);
   };
   render() {
-    const { handleSubmit } = this.props;
     return (
-      <FieldWrapper>
-        <form onSubmit={handleSubmit(this.onSubmit)}>
-          <Field
-            name={EForm.title}
-            label={ILabels.eTitle}
-            component={FormInput}
-          />
-          <Field
-            name={EForm.desciption}
-            label={ILabels.eDesc}
-            component={FormInput}
-          />
-          <CustomButton onClick={() => {}} title={buttonTitle.Submit} primary />
-        </form>
-      </FieldWrapper>
+      <>
+        <ListHeading>{titles.lTitle}</ListHeading>
+        <StreamForm onSubmit={this.onSubmit} />
+      </>
     );
   }
 }
 
-const form = reduxForm<{}>({
-  form: EForm.createStreamForm,
-  validate: formValidation
-})(CreateStream);
-export default connect(null, { createStreamAction })(form);
+export default connect(null, { createStreamAction })(CreateStream);

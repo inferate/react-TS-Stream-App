@@ -7,3 +7,7 @@ export interface ITrackLoginAction extends Action {
 export interface ITrackStreams extends Action {
   type: EActionTypes;
 }
+
+export interface ITrackErrors extends Action {
+  type: EActionTypes;
+}

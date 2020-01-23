@@ -50,7 +50,7 @@ const ListActionButtonContainer = styled(ButtonContainer)`
   }
 `;
 const ListCreateActionButton = styled(ListActionButtonContainer)`
-  min-width:150px;
+  min-width:120px;
   color: #494949
   border-radius: 4px 12px 4px 12px;
   &:hover{

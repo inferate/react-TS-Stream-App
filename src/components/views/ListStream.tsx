@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { buttonTitle, defaultIconSize } from "../../models/enums/EHeadings";
+import {
+  buttonTitle,
+  defaultIconSize,
+  titles
+} from "../../models/enums/EHeadings";
 import { IFormActionsState } from "../../models/IFormActions";
 import { fetchStreamsAction } from "../../store/actions/actions";
 import { RootAppState } from "../../store/reducers/rootReducer";
@@ -17,50 +21,61 @@ import {
   ListIcon,
   ListItemEven,
   ListItemOdd,
+  ListLink,
   ListWrapper
 } from "../../styled/list/ListContainer";
+import { Loader } from "../loader/Loader";
 
 type TListStreamProps = ReturnType<typeof mapStateToProps & any>;
-interface IAction {
+interface IListStreamProps {
   fetchStreamsAction: () => void;
   streams: IFormActionsState[];
-  renterAdmin: any;
+  isSignedIn: any;
 }
 
-class ListStream extends Component<IAction & TListStreamProps> {
+class ListStream extends Component<IListStreamProps & TListStreamProps> {
   componentDidMount() {
     this.props.fetchStreamsAction();
   }
 
-  renderAdminButtons = () => {
+  renderContent = () => {
+    const { streams, error } = this.props;
+    const isEmpty = Object.entries(streams).length === 0;
+    if (error) {
+      return <ListHeading>{error}</ListHeading>;
+    } else if (!error && isEmpty) {
+      return <Loader />;
+    } else {
+      return this.renderListStreams();
+    }
+  };
+
+  renderAdminButtons = (stream: IFormActionsState) => {
     return (
       <ListButtonContainer>
-        <Link to="/streams/edit">
-          <ListActionButton onClick={() => {}} title={buttonTitle.Edit} />
+        <Link to={`/streams/edit/${stream.id}`}>
+          <ListActionButton title={buttonTitle.Edit} />
         </Link>
-        <Link to="/streams/delete">
-          <ListActionButton
-            onClick={() => {}}
-            title={buttonTitle.Delete}
-            icon
-          />
+        <Link to={`streams/delete/${stream.id}`}>
+          <ListActionButton title={buttonTitle.Delete} icon />
         </Link>
       </ListButtonContainer>
     );
   };
   renderCreateButton = () => {
-    return (
-      <ListCreateContainer>
-        <Link to="/streams/new">
-          <ListCreateButton
-            onClick={() => {}}
-            title={buttonTitle.Create}
-            icon
-          />
-        </Link>
-      </ListCreateContainer>
-    );
+    const { isSignedIn } = this.props;
+    if (isSignedIn) {
+      return (
+        <ListCreateContainer>
+          <Link to="/streams/new">
+            <ListCreateButton title={buttonTitle.Create} icon />
+          </Link>
+        </ListCreateContainer>
+      );
+    }
+    return null;
   };
+
   renderListStreams = () => {
     const { streams, currentUserId } = this.props;
     const streamItems = streams.map((stream: IFormActionsState) => {
@@ -69,13 +84,15 @@ class ListStream extends Component<IAction & TListStreamProps> {
           <ListContainer>
             <ListWrapper>
               <ListIcon size={defaultIconSize} />
-              <ListItemEven>{stream.title}</ListItemEven>
+              <ListLink to={`streams/${stream.id}`}>
+                <ListItemEven>{stream.title}</ListItemEven>
+              </ListLink>
               <ListItemOdd>{stream.description}</ListItemOdd>
             </ListWrapper>
           </ListContainer>
           {stream.userId === currentUserId &&
             currentUserId &&
-            this.renderAdminButtons()}
+            this.renderAdminButtons(stream)}
         </div>
       );
     });
@@ -84,9 +101,9 @@ class ListStream extends Component<IAction & TListStreamProps> {
   render() {
     return (
       <>
-        <ListHeading>All Streams</ListHeading>
-        <div>{this.renderListStreams()}</div>
-        {this.props.isSignedIn ? this.renderCreateButton() : null}
+        <ListHeading>{titles.sHeading}</ListHeading>
+        {this.renderContent()}
+        {this.renderCreateButton()}
       </>
     );
   }
@@ -95,7 +112,8 @@ const mapStateToProps = (state: RootAppState) => {
   return {
     streams: Object.values(state.streams),
     currentUserId: state.auth.userId,
-    isSignedIn: state.auth.isSignedIn
+    isSignedIn: state.auth.isSignedIn,
+    error: state.err
   };
 };
 

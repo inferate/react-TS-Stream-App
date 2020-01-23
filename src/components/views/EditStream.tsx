@@ -1,7 +1,60 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { match } from "react-router-dom";
+import { PERMISSION_MESSAGE } from "../../helpers/formValidation";
+import { titles } from "../../models/enums/EHeadings";
+import { IFormActionsState } from "../../models/IFormActions";
+import { editStreamAction, getStreamAction } from "../../store/actions/actions";
+import { RootAppState } from "../../store/reducers/rootReducer";
+import { ListHeading } from "../../styled/list/ListContainer";
+import StreamForm from "../form/StreamForm";
+import { Loader } from "../loader/Loader";
 
-const EditStream: React.FC = () => {
-  return <div>EditStream</div>;
+interface Params {
+  id: string;
+}
+
+interface IOwnProps {
+  match: match<Params>;
+}
+
+interface IEditStreamProps {
+  getStreamAction: (param: Params | any) => void;
+  stream: IFormActionsState;
+  editStreamAction: (param: any, paramV: any) => void;
+  currentUserId: string;
+}
+
+const EditStream: React.FC<IEditStreamProps & IOwnProps> = props => {
+  const { id } = props.match.params;
+  const { ...initialValues } = props.stream;
+  const { getStreamAction, editStreamAction, currentUserId, stream } = props;
+
+  useEffect(() => {
+    getStreamAction(id);
+  }, [id, getStreamAction]);
+
+  const onSubmit = (formValues: any) => {
+    editStreamAction(id, formValues);
+  };
+
+  if (!stream) {
+    return <Loader />;
+  } else if (stream.userId !== currentUserId && currentUserId) {
+    return <ListHeading>{PERMISSION_MESSAGE}</ListHeading>;
+  } else {
+    return (
+      <>
+        <ListHeading>{titles.sTitle}</ListHeading>
+        <StreamForm initialValues={initialValues} onSubmit={onSubmit} />
+      </>
+    );
+  }
 };
-
-export default EditStream;
+const mapStateToProps = (state: RootAppState, ownProps: IOwnProps) => {
+  const { id } = ownProps.match.params;
+  return { stream: state.streams[id], currentUserId: state.auth.userId };
+};
+export default connect(mapStateToProps, { getStreamAction, editStreamAction })(
+  EditStream
+);

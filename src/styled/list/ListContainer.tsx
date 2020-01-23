@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { VideoPlus } from "styled-icons/boxicons-regular/VideoPlus";
 export const ListItemEven = styled.div`
@@ -10,6 +11,7 @@ export const ListItemEven = styled.div`
 export const ListItemOdd = styled(ListItemEven)`
   font-size: 0.8rem;
   color:#d09262
+  cursor: default;
   border-bottom: 1px solid #d09262;
   display: flex;
   margin-left: 30px;
@@ -39,4 +41,16 @@ export const ListIcon = styled(VideoPlus)`
 `;
 export const ListHeading = styled.h2`
   margin-left: 3rem;
+`;
+export const ListDesc = styled.h3`
+  margin-left: 3rem;
+`;
+export const ListLink = styled(Link)`
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
 `;

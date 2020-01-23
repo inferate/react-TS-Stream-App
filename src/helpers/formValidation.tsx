@@ -16,3 +16,6 @@ export const formValidation = (
   }
   return errors;
 };
+
+export const PERMISSION_MESSAGE =
+  "You do not have the permission to edit this stream";

@@ -1,10 +1,10 @@
 import { AnyAction } from "redux";
 import {
-  ActionCreatorStreams,
+  ActionCreatorsStreams,
   EActionTypes
 } from "../../models/types/actionTypes";
 
-type TStreamReducerAction = ActionCreatorStreams | AnyAction;
+type TStreamReducerAction = ActionCreatorsStreams | AnyAction;
 
 export const streamReducer = (state = {}, action: TStreamReducerAction) => {
   switch (action.type) {
@@ -25,7 +25,7 @@ export const streamReducer = (state = {}, action: TStreamReducerAction) => {
       return { ...state, [action.payload.id]: action.payload };
     case EActionTypes.DELETE_STREAM:
       const newStream = { ...state } as any;
-      delete newStream[action.payload.id];
+      delete newStream[action.payload];
       return newStream;
     default:
       return state;

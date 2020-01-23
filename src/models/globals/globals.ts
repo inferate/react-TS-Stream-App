@@ -6,3 +6,4 @@ declare global {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
   }
 }
+export const modalRoot = document.querySelector("#modal") as HTMLElement;
