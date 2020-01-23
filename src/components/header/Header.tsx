@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { headings } from "../../models/enums/EHeadings";
 import {
   Input,
   Nav,
@@ -9,21 +9,22 @@ import {
   NavRight,
   PositionedLink
 } from "../../styled/";
+import Authentication from "../auth/Authentication";
+interface IHeaderProps {}
 
-interface Props {}
-
-export const Header: React.FC<Props> = props => {
+export const Header: React.FC<IHeaderProps> = props => {
   return (
     <Nav>
       <NavHeader>
         <NavLeft>
-          <Link to="/">Streamer</Link>
+          <PositionedLink to="/">Streamer</PositionedLink>
         </NavLeft>
         <NavCenter>
-          <Input type="text" placeholder="Search" />
+          <Input placeholder={headings.search} />
         </NavCenter>
         <NavRight>
           <PositionedLink to="/">All Streams</PositionedLink>
+          <Authentication />
         </NavRight>
       </NavHeader>
     </Nav>
