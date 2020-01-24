@@ -83,7 +83,7 @@ class ListStream extends Component<IListStreamProps & TListStreamProps> {
         <div key={stream.id}>
           <ListContainer>
             <ListWrapper>
-              <ListIcon crossOrigin size={defaultIconSize} />
+              <ListIcon size={defaultIconSize} />
               <ListLink to={`streams/${stream.id}`}>
                 <ListItemEven>{stream.title}</ListItemEven>
               </ListLink>

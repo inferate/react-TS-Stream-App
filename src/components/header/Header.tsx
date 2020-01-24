@@ -1,9 +1,6 @@
 import React from "react";
-import { headings } from "../../models/enums/EHeadings";
 import {
-  Input,
   Nav,
-  NavCenter,
   NavHeader,
   NavLeft,
   NavRight,
@@ -19,9 +16,9 @@ export const Header: React.FC<IHeaderProps> = props => {
         <NavLeft>
           <PositionedLink to="/">Streamer</PositionedLink>
         </NavLeft>
-        <NavCenter>
+        {/* <NavCenter>
           <Input placeholder={headings.search} />
-        </NavCenter>
+        </NavCenter> */}
         <NavRight>
           <PositionedLink to="/">All Streams</PositionedLink>
           <Authentication />

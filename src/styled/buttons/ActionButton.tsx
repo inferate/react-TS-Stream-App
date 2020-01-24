@@ -9,18 +9,18 @@ import {
   Submit
 } from "../buttons/AuthButton";
 
-const Modify = styled(MoreVert)`
+const Modify = styled<any>(MoreVert)`
   color: black;
   padding-bottom: 2px;
   margin-right: 5px;
   size:24px;cls
 `;
 
-const Delete = styled(Minus)`
+const Delete = styled<any>(Minus)`
   padding-bottom: 2px;
   margin-right: 5px;
 `;
-const Create = styled(Submit)`
+const Create = styled<any>(Submit)`
   color: inherit;
 `;
 export const ListButtonContainer = styled.div`
@@ -66,9 +66,9 @@ export const ListActionButton: React.FC<IDefaultButtonProps> = ({
 }) => (
   <ListActionButtonContainer onClick={onClick}>
     {icon ? (
-      <Delete crossOrigin size={defaultIconSize} />
+      <Delete size={defaultIconSize} />
     ) : (
-      <Modify crossOrigin size={defaultIconSize} />
+      <Modify size={defaultIconSize} />
     )}
     {title}
   </ListActionButtonContainer>
@@ -81,9 +81,9 @@ export const ListCreateButton: React.FC<IDefaultButtonProps> = ({
 }) => (
   <ListCreateActionButton onClick={onClick}>
     {icon ? (
-      <Create size={defaultIconSize} crossOrigin />
+      <Create size={defaultIconSize} />
     ) : (
-      <Modify size={defaultIconSize} crossOrigin />
+      <Modify size={defaultIconSize} />
     )}
     {title}
   </ListCreateActionButton>
