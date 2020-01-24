@@ -17,21 +17,18 @@ export const Wrapper = styled.div`
   background: rgba(0, 0, 0, 0.5);
   border-radius: 6px;
   position: relative;
-  height: 25%;
+  height: 22%;
   margin: 0 auto;
-  top: 17.2rem;
+  top: 12.2rem;
   z-index: 1050;
-  width: 80%;
+  width: 70%;
   background-color: #fefefe;
   box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
-  @media only screen and (min-device-width: 375px) and (max-device-width: 667rpx) {
-    height: 30%;
-  }
 `;
 
 export const ModalHeading = styled(ListHeading)`
-  margin: 20px;
-  padding-top: 10px;
+  margin: 17px;
+  padding-top: 5px;
   text-align: left;
 `;
 export const ActionWrapper = styled.div`
@@ -47,5 +44,5 @@ export const DefButton = styled.div`
 `;
 export const ModalContent = styled.h4`
 @media (max-width: 580px) {
-  height: 15%
+  height: 12%
 `;

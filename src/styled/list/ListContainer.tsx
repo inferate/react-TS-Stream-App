@@ -19,7 +19,8 @@ export const ListItemOdd = styled(ListItemEven)`
 `;
 
 export const ListContainer = styled.div`
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   height: 75px;
   display: flex;
   align-items: center;
@@ -42,7 +43,17 @@ export const ListIcon = styled<any>(VideoPlus)`
   padding-bottom: 5px;
 `;
 export const ListHeading = styled.h2`
+  display: flex;
+  justify-content: center;
+`;
+
+export const ListStreamHead = styled.h2`
   margin-left: 3rem;
+  @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+    display: flex;
+    margin-left: 0;
+    justify-content: center;
+  }
 `;
 export const ListDesc = styled.h3`
   margin-left: 3rem;

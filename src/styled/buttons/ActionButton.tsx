@@ -10,7 +10,7 @@ import {
 } from "../buttons/AuthButton";
 
 const Modify = styled<any>(MoreVert)`
-  color: black;
+ color: ${props => props.theme.textStyle.fourty}
   padding-bottom: 2px;
   margin-right: 5px;
   size:24px;cls
@@ -18,6 +18,7 @@ const Modify = styled<any>(MoreVert)`
 
 const Delete = styled<any>(Minus)`
   padding-bottom: 2px;
+  color: ${props => props.theme.textStyle.fourty}
   margin-right: 5px;
 `;
 const Create = styled<any>(Submit)`
@@ -29,21 +30,24 @@ export const ListButtonContainer = styled.div`
 `;
 export const ListCreateContainer = styled.div`
   text-align: center;
+  @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+    text-align: right;
+  }
 `;
 
 const ListActionButtonContainer = styled(ButtonContainer)`
-  color: #d09262
+  color: ${props => props.theme.backgroundStyle.element}
   text-transform: uppercase;
   background: rgba(255, 255, 255, 0.3);
   margin: 5px;
   padding: 5px;
-  border: 2px solid #494949 !important;
+  border: 2px solid  ${props => props.theme.textStyle.default} !important;
   display: inline-block;
   transition: all 0.3s ease 0s;
   &:hover {
-    color: #494949 ;
+    color: ${props => props.theme.textStyle.default}
     border-radius: 50px;
-    border-color: #d09262 !important;
+    border-color: ${props => props.theme.backgroundStyle.element} !important;
     transition: all 0.3s ease 0s;
   }
   :focus {
@@ -51,11 +55,11 @@ const ListActionButtonContainer = styled(ButtonContainer)`
   }
 `;
 const ListCreateActionButton = styled(ListActionButtonContainer)`
-  min-width:120px;
-  color: #494949
+  min-width:108px;
+  color:  ${props => props.theme.textStyle.default}
   border-radius: 4px 12px 4px 12px;
   &:hover{
-      color:#d09262 
+      color: ${props => props.theme.backgroundStyle.element}
   }
 
 `;

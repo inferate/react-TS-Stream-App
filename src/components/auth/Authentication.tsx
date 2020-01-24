@@ -17,6 +17,7 @@ interface IAuthProps {
 class Authentication extends React.Component<IAuthProps> {
   auth: any;
   title: any;
+
   componentDidMount() {
     window.gapi.load("client:auth2", () => {
       window.gapi.client
@@ -33,9 +34,10 @@ class Authentication extends React.Component<IAuthProps> {
   }
 
   onAuthChange = (isSignedIn: IAuthProps) => {
+    const { signInAction, signOutAction } = this.props;
     isSignedIn
-      ? this.props.signInAction(this.auth.currentUser.get().getId())
-      : this.props.signOutAction();
+      ? signInAction(this.auth.currentUser.get().getId())
+      : signOutAction();
   };
 
   onAuthSingIn = () => {

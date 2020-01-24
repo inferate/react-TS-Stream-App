@@ -45,7 +45,7 @@ const ShowStream: React.FC<IEditStreamProps & IOwnProps> = ({
     }
   }, [playerCreated]);
   useEffect(() => {
-    if (stream && !playerCreated) {
+    if (stream && !playerCreated && videoRef.current && videoRef.current) {
       const player = flv.createPlayer({
         type: "flv",
         url: `http://localhost:8000/live/${stream.id}.flv`

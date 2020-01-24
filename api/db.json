@@ -1,10 +1,10 @@
 {
   "streams": [
     {
-      "title": "Current Desktop Stream",
-      "description": "You can stream everything in the monitors",
+      "title": "Test",
+      "description": "TEst",
       "userId": "103390252762515434391",
-      "id": 2
+      "id": 1
     }
   ]
 }

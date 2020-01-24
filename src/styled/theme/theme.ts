@@ -25,6 +25,7 @@ export const theme = {
   },
   textStyle: {
     primary: "#fff",
+    default: "#494949",
     secondary: "#680A65",
     thirdy: "#4388CA",
     fourty: "#242024",
@@ -32,6 +33,7 @@ export const theme = {
   },
   backgroundStyle: {
     primary: " #e0f2f1;",
+    element: "#d09262",
     body: "#ff004938",
     secondary: "#db7093"
   },

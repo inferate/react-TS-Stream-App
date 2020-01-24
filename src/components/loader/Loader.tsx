@@ -28,6 +28,7 @@ const Dot = styled.div<ILoader>`
 export const Loader: React.FC<ILoader> = () => {
   return (
     <DotWrapper>
+      Loading
       <Dot delay="0s" />
       <Dot delay=".1s" />
       <Dot delay=".2s" />

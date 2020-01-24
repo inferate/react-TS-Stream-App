@@ -21,10 +21,12 @@ interface IDeleteStream {
 interface Params {
   id: string;
 }
-const DeleteStream: React.FC<IDeleteStream> = props => {
-  const { getStreamAction, deleteStreamAction } = props;
-  const { id } = props.match.params;
-  console.log(props);
+const DeleteStream: React.FC<IDeleteStream> = ({
+  getStreamAction,
+  deleteStreamAction,
+  match
+}) => {
+  const { id } = match.params;
 
   useEffect(() => {
     getStreamAction(id);

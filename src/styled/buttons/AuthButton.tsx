@@ -12,13 +12,12 @@ export interface IDefaultButtonProps {
 }
 
 export const GoogleIcon = styled<any>(GooglePlus)`
-  color: white;
+color: ${props => props.theme.primary}
   padding-bottom: 2px;
   margin-right: 5px;
 `;
 
 export const Submit = styled<any>(Plus)`
-  color: white;
   padding-bottom: 2px;
   margin-right: 5px;
 `;
@@ -26,8 +25,9 @@ export const Submit = styled<any>(Plus)`
 export const ButtonContainer = styled.button<IDefaultButtonProps>`
   min-width: 100px;
   mаx-width: 112px;
+  min-height: 30px;
   cursor: pointer;
-  color: white;
+  color: ${props => props.theme.primary}
   border-radius: 4px 12px 4px 12px;
   background: ${props =>
     props.primary ? props.theme.buttonStyles.auth : props.theme.icons.main};
