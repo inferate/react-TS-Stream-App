@@ -30,7 +30,7 @@ Now if you go to http://localhost:3000/posts/1, you'll get
 
 Also when doing requests, it's good to know that:
 
-If you make POST, PUT, PATCH or DELETE requests,<br> changes will be automatically and safely saved to db.json using lowdb.
+If you make POST, PUT, PATCH or DELETE requests,<br> changes will be automatically and safely saved to db.json using lowdb.<br>
 Your request body JSON should be object enclosed, just like the GET output.<br> (for example {"name": "Foobar"})
 Id values are not mutable. Any id value in the body <br>of your PUT or PATCH request will be ignored. Only a value set in a POST<br> request will be respected, <br>but only if not already taken.
 A POST, PUT or PATCH request should include a Content-Type:<br> application/json header to use the JSON in the request body. <br>Otherwise it will result in a 200 OK but without changes being made to the data.
