@@ -7,7 +7,7 @@ import ListStream from "../views/ListStream";
 import ShowStream from "../views/ShowStream";
 interface InavigatorProps {}
 
-const Navigator: React.FC<InavigatorProps> = props => {
+const Navigator: React.FC<InavigatorProps> = () => {
   return (
     <Switch>
       <Route path="/" exact component={ListStream} />

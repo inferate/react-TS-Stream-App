@@ -22,6 +22,7 @@ import {
   ListItemEven,
   ListItemOdd,
   ListLink,
+  ListStreamHead,
   ListWrapper
 } from "../../styled/list/ListContainer";
 import { Loader } from "../loader/Loader";
@@ -101,7 +102,7 @@ class ListStream extends Component<IListStreamProps & TListStreamProps> {
   render() {
     return (
       <>
-        <ListHeading>{titles.sHeading}</ListHeading>
+        <ListStreamHead>{titles.sHeading}</ListStreamHead>
         {this.renderContent()}
         {this.renderCreateButton()}
       </>

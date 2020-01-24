@@ -5,6 +5,7 @@ export const PositionedLink = styled(Link)`
   text-decoration: none;
   align-self:center
   flex-grow:2;
+  padding:4px;
   color: ${props => props.theme.textStyle.fourty};
 `;
 
@@ -33,10 +34,9 @@ export const NavLeft = styled.div`
   text-align: left;
 `;
 export const NavCenter = styled.div`
-  flex:1
-  @media (max-width: 762px) {
-    padding :15px
-    
+  flex: 1 @media (max-width: 762px) {
+    padding: 15px;
+  }
 `;
 export const Input = styled.input`
   border:  1px solid #494949

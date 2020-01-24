@@ -19,16 +19,21 @@ interface IOwnProps {
 }
 
 interface IEditStreamProps {
-  getStreamAction: (param: Params | any) => void;
+  getStreamAction: (arg: Params | any) => void;
   stream: IFormActionsState;
-  editStreamAction: (param: any, paramV: any) => void;
+  editStreamAction: (args: any, argV: any) => void;
   currentUserId: string;
 }
 
-const EditStream: React.FC<IEditStreamProps & IOwnProps> = props => {
-  const { id } = props.match.params;
-  const { ...initialValues } = props.stream;
-  const { getStreamAction, editStreamAction, currentUserId, stream } = props;
+const EditStream: React.FC<IEditStreamProps & IOwnProps> = ({
+  getStreamAction,
+  editStreamAction,
+  currentUserId,
+  stream,
+  match
+}) => {
+  const { id } = match.params;
+  const { ...initialValues } = stream;
 
   useEffect(() => {
     getStreamAction(id);
