@@ -37,9 +37,11 @@ const ShowStream: React.FC<IEditStreamProps & IOwnProps> = ({
   }, [getStreamAction, match]);
 
   useEffect(() => {
+    console.log(playerCreated);
+    console.log(setPlayerCreated);
     if (playerCreated) {
       return () => {
-        playerCreated.destroy();
+        playerCreated?.destroy();
         setPlayerCreated(false);
       };
     }

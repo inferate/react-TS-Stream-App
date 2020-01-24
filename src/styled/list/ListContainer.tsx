@@ -37,7 +37,8 @@ export const ListWrapper = styled.div`
   flex: 1;
   padding: 20px;
 `;
-export const ListIcon = styled(VideoPlus)`
+
+export const ListIcon = styled<any>(VideoPlus)`
   padding-bottom: 5px;
 `;
 export const ListHeading = styled.h2`

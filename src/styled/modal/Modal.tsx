@@ -37,7 +37,7 @@ export const ModalHeading = styled(ListHeading)`
 export const ActionWrapper = styled.div`
   display: inline-flex;
   justify-content: flex-end;
-  width: 100%;
+  width: 94%;
   @media (max-width: 580px) {
     justify-content: space-around;
   }
@@ -45,4 +45,7 @@ export const ActionWrapper = styled.div`
 export const DefButton = styled.div`
   width: 20%;
 `;
-export const ModalContent = styled.h4``;
+export const ModalContent = styled.h4`
+@media (max-width: 580px) {
+  height: 15%
+`;

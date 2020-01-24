@@ -11,13 +11,13 @@ export interface IDefaultButtonProps {
   icon?: boolean;
 }
 
-export const GoogleIcon = styled(GooglePlus)`
+export const GoogleIcon = styled<any>(GooglePlus)`
   color: white;
   padding-bottom: 2px;
   margin-right: 5px;
 `;
 
-export const Submit = styled(Plus)`
+export const Submit = styled<any>(Plus)`
   color: white;
   padding-bottom: 2px;
   margin-right: 5px;
@@ -44,9 +44,9 @@ export const CustomButton: React.FC<IDefaultButtonProps> = ({
 }) => (
   <ButtonContainer onClick={onClick} primary={primary}>
     {icon ? (
-      <GoogleIcon crossOrigin size={defaultIconSize} />
+      <GoogleIcon size={defaultIconSize} />
     ) : (
-      <Submit crossOrigin size={defaultIconSize} />
+      <Submit size={defaultIconSize} />
     )}
     {title}
   </ButtonContainer>
