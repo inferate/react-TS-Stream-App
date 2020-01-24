@@ -14,20 +14,21 @@ Create a start script with server information and port accordingly:
 
 Start JSON Server
 
-### `npm start`
+### `npm start`<br>
 
+<br>
 ### `npm version`
 
 const NodeMediaServer = require('node-media-server');
 
 const config = {
 rtmp: {
-port: 1935,
-chunk_size: 60000,
-gop_cache: true,
-ping: 30,
+port: 1935,<br>
+chunk_size: 60000,<br>
+gop_cache: true,<br>
+ping: 30,<br>
 ping_timeout: 60
-},
+},<br>
 http: {
 port: 8000,
 allow_origin: '\*'
